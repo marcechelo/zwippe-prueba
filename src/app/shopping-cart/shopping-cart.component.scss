@@ -1,0 +1,31 @@
+body{
+    background-color: rgba(249, 249, 249, 1);
+    overflow: hidden;
+    display: table;
+    width: 100%;
+    
+}
+
+.values{
+    font-weight: bold;
+}
+
+.menuBarButton{
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+.menuBarButton:hover{
+    cursor: pointer;
+}
+
+agm-map {
+    height: 300px;
+  }
+
+#map {
+height: 400px;
+/* The height is 400 pixels */
+width: 100%;
+/* The width is the width of the web page */
+}

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Home</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    
+    <!-- Primera Seccion Imagen y Buscar -->
+
+    <div class="row" style="padding-top: 5rem;">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+            <img src="/assets/images/logo-png.png" alt="Zwippe log" height="50%" width="100%" style="margin-top: -2rem; background-size: cover;">
+        </div>
+        <div class="col-sm-6">
+              <div class="input-group mb-3" style="margin-top: 0.8rem">
+                <input type="text" class="form-control" placeholder="Producto o Establecimiento" aria-label="Username" aria-describedby="basic-addon1" style="border-right-style: hidden;">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1" style="background-color: white; border-left-style: hidden;"><i class="fas fa-search fa-lg" style="margin-top: 0.3rem; margin-bottom: 0.3rem; color: rgba(193, 190, 185, 1);"></i></span>
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+    <!-- FIN Primera Seccion Imagen y Buscar -->
+
+    <!-- Menu bar -->
+
+    <div class="row" style="margin-top: 1rem; background-color: rgba(251, 29, 69, 1); overflow: visible; position: relative;">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10 row" style="color: white; text-align: right; margin-top: 0.5rem;">
+            <div class="col-sm-2" style="border-right-style: solid; border-color: white; margin-bottom: 0.5rem; text-align: left; border-width: thin;">
+                  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                    <span style="font-weight: bold; font-size: 17px;">Establecimientos</span>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                      <button mat-menu-item *ngFor="let estab of establisments" (click) = "goToEstablishment(estab[0])">
+                        <!--<mat-icon>dialpad</mat-icon>-->
+                        <span>{{estab[1]}}</span>
+                      </button>
+                  </mat-menu>
+                  
+            </div>
+            <div class="col-sm-2 menuBarButton"><span>Aliementos</span></div>
+            <div class="col-sm-2 menuBarButton"><span>Farmacia</span></div>
+            <div class="col-sm-2 menuBarButton"><span>Papeleria</span></div>
+            <div class="col-sm-2 menuBarButton"><span>Moda</span></div>
+            <div class="col-sm-2 menuBarButton" (click)="goShoppingCart()"><i class="material-icons" style="font-size: 25px; margin-right: 1rem;">shopping_cart</i></div>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+
+    <!-- FIN Menu bar -->
+
+    <!-- Cuadricula de productos -->
+
+    <div class="row" style="margin-top: 5rem;">
+      <div class="col-lg-2 col-sm-0"></div>
+      <div class="col-lg-2 col-sm-4" style="margin-right: 2rem;">  
+
+        <mat-accordion >
+          <!-- #docregion basic-panel -->
+          <!-- #docregion hide-toggle -->
+            <mat-expansion-panel hideToggle>
+          <!-- #enddocregion hide-toggle -->
+              <mat-expansion-panel-header style="background-color: rgba(249, 249, 249, 1);">
+                <mat-panel-title style="font-weight: bold; margin-bottom: 1rem;">
+                  Categorias
+                </mat-panel-title>
+              
+              </mat-expansion-panel-header>
+            </mat-expansion-panel>
+          <!-- #enddocregion basic-panel -->
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false" *ngFor ="let category of categorys" style="background-color: rgba(249, 249, 249, 1);">
+              <mat-expansion-panel-header>
+                <mat-panel-title style="font-weight: bold;" (click)="changePorducts(category[0])">
+                 {{category[1]}}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <p style="color:red">I'm visible because I am open</p>
+            </mat-expansion-panel>
+          </mat-accordion>
+
+      </div>
+      <div class="col-lg-6 col-sm-8">
+        <div class="card">
+          <p-dataView #dv [value]="products" [paginator]="true" [rows]="9" filterBy="name"
+              [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
+              <ng-template pTemplate="header">                
+                  <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
+                      <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Ordenar por Precio" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+                  </div>
+              </ng-template>
+              <ng-template let-product pTemplate="listItem" >
+                  <div class="p-col-12">
+                      <div class="product-list-item" >
+                        
+                          <div style="text-align: center">
+                            <img src={{product.imageItem}} alt="item" style="object-fit: contain;">                    
+                        </div>
+                          <div class="product-list-detail">
+                              <div class="product-name">{{product.name}}</div>
+                              <div class="product-description">{{product.description}}</div>
+                              <i class="pi pi-tag product-category-icon"></i><span class="product-category">{{product.category}}</span>
+                          </div>
+                          <div class="product-list-action">
+                              <span class="product-price">${{product.price}}</span>
+                              <button mat-mini-fab style="background-color: rgba(61, 213, 250, 1);">
+                                <mat-icon>shopping_cart</mat-icon>
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+              </ng-template>
+              <ng-template let-product pTemplate="gridItem" >
+                  <div class="p-col-12 p-md-4" style="padding: 0.1rem!important; background-color: rgba(249, 249, 249, 1);">
+                      <div class="product-grid-item card" style="background-color: white!important;">
+                          
+                            <div class="example-button-container favourite" >
+                              <button pButton pRipple type="button" icon="pi pi-heart" class="p-button-rounded" 
+                              style="background-color:  rgba(249, 249, 249, 1); border-style: none; color: rgba(251, 29, 69, 1); font-weight: bold;"></button>
+                            </div>
+                            <div style="text-align: center;">
+                              <img src={{product.imageItem}} alt="item" style="background-position:50% 50%; background-repeat: no-repeat; background-size: cover;">
+                            </div>
+                          
+                          <div class="product-grid-item-top">
+                              <div style="margin-top: 1rem;">
+                                  <span class="product-category">{{product.category}}</span>
+                              </div>
+                          </div>
+                          <div class="product-grid-item-content" style="text-align: left; padding-top: 1rem;">
+                              <div class="product-name">{{product.name}}</div>
+                              <div class="product-description">{{product.description}}</div>
+                          </div>
+                          <div class="product-grid-item-bottom">
+                              <span class="product-price">${{product.price}}</span>  
+                              <button pButton pRipple type="button" icon="pi pi-shopping-cart" class="p-button-rounded" 
+                              style="background-color:  rgba(61, 213, 250, 1); border-style: none;"
+                              (click)="addToCart(product)"></button>
+                              <!--<button mat-mini-fab style="background-color: rgba(61, 213, 250, 1);">
+                                <mat-icon>shopping_cart</mat-icon>
+                              </button>-->
+                                                  
+                          </div>
+                      </div>
+                  </div>
+              </ng-template>
+          </p-dataView>
+        </div>
+        
+      </div>
+      <div class="col-lg-2 col-sm-0"></div>
+      
+      
+    </div>
+
+    <!-- Cuadricula de productos -->
+
+    <script>
+      $('.dropdown-toggle').dropdown()
+    </script>
+
+</body>
+
+</html>

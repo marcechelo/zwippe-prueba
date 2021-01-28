@@ -1,0 +1,45 @@
+img {
+    margin-top: 1rem; 
+    margin-bottom: 1rem;
+    width: 50%; 
+    height: 60%; 
+}
+
+.favourite {
+    text-align: right; 
+    position: absolute; 
+    right: 5px; 
+    top: 10px;
+}
+
+.greyColor{
+    background-color: rgba(249, 249, 249, 1);
+}
+
+.card-text{
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.shoppingCart{
+    text-align: right;
+    position: absolute; 
+    right: 5px; 
+    bottom: 2px;
+}
+
+.card{
+    border-style: none;
+    margin-top: 5rem;
+}
+
+.card-title{
+    font-size: 15px;
+}
+
+.itemList{
+    font-size: 14px;
+    margin-top: -0.8rem;
+    color: rgb(155, 155, 155);
+}
+

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "zwippeapp-dev": {
+      "hosting": {
+        "MarketPlace2": [
+          "zwippeapp-dev"
+        ]
+      }
+    }
+  }
+}

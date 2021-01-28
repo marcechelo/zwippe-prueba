@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        <div class="row" style="padding-top: 8rem;">
+    
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <div class="form-container">
+                    <!--<form [formGroup]="checkoutForm" (ngSubmit)='onSubmit()'>
+                        <input type="text" placeholder="Email" formControlName="email" name="name" class="input-txt" required>
+                        <input type="text" placeholder="Password" formControlName="password" name="password" class="input-txt" required>
+                        <input placeholder="Ex. Pizza" >                        
+                        <button mat-flat-button color="primary" type="submit">Login</button>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Contraseña</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                          </mat-form-field>
+            
+                    </form>-->
+                    <div style="text-align: center;">
+                        <img src="/assets/images/logo-png.png" alt="Zwippe log" height="80%" width="90%">
+                    </div>
+
+                    <div class="row" style="margin-top: 1rem; border-bottom-style: solid; border-width: thin; border-color: rgb(76, 76, 76);">
+                        
+                    </div>
+                    
+                    <form style="text-align: center; margin-top: 2rem;" [formGroup]="checkoutForm" (ngSubmit)='onSubmit()'>
+                        <div class="form-group">
+                          <input formControlName="email" type="text" class="form-control text-center" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Usuario">
+                        </div>
+                        <div class="form-group" style="margin-top: 2rem;">
+                          <input formControlName="password" type="password" class="form-control text-center" id="exampleInputPassword1" placeholder="Contraseña">
+                        </div>
+                        <div class="form-check">
+                        </div>
+                        <!--<button type="submit" class="btn btn-primary">Aceptar</button>-->
+                        <a href="" style="color: black;">*Olvidaste tu contraseña</a><br>
+                        <button mat-flat-button color="primary" type="submit" style="margin-top: 1rem;">Aceptar</button> <br>
+                        <label for="" style="margin-top: 1rem;">¿Eres nuevo? <span style="font-weight: bold;"> Resgistrarse</span></label>                        
+                      </form>
+                </div>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </body>
+
+</html>
+
+
